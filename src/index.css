@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --color-brand-indigo: #6366f1;
+  --animate-fade-in: fade-in 0.6s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#F8FAFC] text-slate-900 antialiased m-0 p-0;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer components {
+  /* This creates the professional 'Card' look seen in your screenshots */
+  .glass-card {
+    @apply bg-white border border-slate-200 shadow-sm rounded-[24px] p-6 transition-all duration-300 hover:shadow-md;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-indigo-700 active:scale-95 transition-all;
+  }
+
+  /* Fixed sidebar layout */
+  .layout-wrapper {
+    @apply flex min-h-screen w-full overflow-hidden;
+  }
+
+  .sidebar-container {
+    @apply w-64 border-r border-slate-200 bg-white h-screen sticky top-0 hidden lg:flex flex-col p-6;
+  }
+
+  .main-content {
+    @apply flex-1 h-screen overflow-y-auto p-6 lg:p-10;
+  }
+}
+
+/* Fix for charts to ensure they don't overflow */
+.recharts-responsive-container {
+  @apply min-h-[300px] w-full;
+}
